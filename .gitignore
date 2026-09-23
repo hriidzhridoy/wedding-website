@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.vite/
+*.local
+.npm-cache/
+test-results/
+playwright-report/
