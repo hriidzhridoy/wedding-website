@@ -1,0 +1,161 @@
+@layer components {
+  .hero-drapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero-drapes .curtain-fabric {
+    width: clamp(70px, 20vw, 260px);
+  }
+  .hero > :not(.hero-drapes) {
+    position: relative;
+  }
+  .hero h1:focus {
+    outline: none;
+  }
+  .hero .hero-edge {
+    display: none;
+  }
+  .hero:before,
+  .hero:after {
+    display: none;
+  }
+  @media (max-width: 700px) {
+    .hero-drapes .curtain-fabric {
+      width: 24%;
+    }
+    .hero > .eyebrow {
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero .intro {
+      max-width: 200px;
+    }
+    .hero h1 {
+      font-size: 80px;
+    }
+    .hero .date-line {
+      font-size: 9px;
+    }
+    .curtain-stage .opening-copy > .eyebrow {
+      max-width: 230px;
+      margin: auto;
+    }
+    .curtain-stage .opening-names {
+      font-size: 64px;
+    }
+  }
+  .curtain-stage {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    color: #fff7e9;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    transition: none;
+  }
+  .curtain-fabric {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 32%;
+    filter: drop-shadow(5px 3px 5px #31070028);
+    pointer-events: none;
+    transition: transform 1.8s cubic-bezier(0.65, 0, 0.2, 1);
+  }
+  .curtain-fabric-left {
+    left: 0;
+  }
+  .curtain-fabric-right {
+    right: 0;
+    transform: scaleX(-1);
+  }
+  .curtain {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.2%;
+    background: repeating-linear-gradient(90deg, #5f0b22 0%, #9a1939 6%, #b92a45 9%, #790f2c 14%, #510a20 20%);
+    box-shadow: inset 0 0 100px #2c001862;
+    transition: transform 1.8s cubic-bezier(.65, 0, .2, 1), border-radius 1.8s;
+    will-change: transform;
+  }
+  .curtain-left { left: 0; border-right: 1px solid #e5b57455; }
+  .curtain-right { right: 0; transform: scaleX(-1); }
+  .opening-copy {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 24px;
+    transition:
+      opacity 0.35s,
+      transform 0.5s;
+  }
+  .opening-copy > .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+  .opening-names {
+    font:
+      70px/1.1 "Cormorant Garamond",
+      Georgia,
+      serif;
+    margin: 35px 0 40px;
+  }
+  .opening-names i {
+    display: block;
+    font-size: 36px;
+    margin: 8px;
+  }
+  .seal {
+    padding: 0;
+    white-space: nowrap;
+    border-radius: 50%;
+    width: 105px;
+    height: 105px;
+    border: 1px solid #f0cc8b;
+    outline: 1px solid #f0cc8b88;
+    outline-offset: 6px;
+    background: #7b1429;
+    box-shadow: 0 6px 30px #30011370;
+    color: #f4dbac;
+    font:
+      32px "Cormorant Garamond",
+      Georgia,
+      serif;
+    transition: transform 0.25s;
+  }
+  .seal span {
+    font-size: 21px;
+  }
+  .seal:hover {
+    transform: scale(1.08);
+  }
+  .tap {
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 34px;
+  }
+  .opened .curtain-left {
+    transform: translateX(-102%);
+    border-radius: 0 0 70% 0;
+  }
+  .opened .curtain-right {
+    transform: translateX(102%) scaleX(-1);
+    border-radius: 0 0 70% 0;
+  }
+  .opened .opening-copy {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+  .curtain-stage.opened {
+    background: transparent;
+    transition: visibility 0s 1.8s;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

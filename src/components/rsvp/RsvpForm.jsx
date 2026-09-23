@@ -1,52 +1,5 @@
-import { useEffect, useState } from "react";
-import { wedding } from "./wedding.js";
-
-function remainingTime() {
-  const seconds = Math.max(
-    0,
-    Math.floor((new Date(wedding.date) - Date.now()) / 1000),
-  );
-  return {
-    days: Math.floor(seconds / 86400),
-    hours: Math.floor(seconds / 3600) % 24,
-    minutes: Math.floor(seconds / 60) % 60,
-    seconds: seconds % 60,
-  };
-}
-
-export function Countdown() {
-  const [remaining, setRemaining] = useState(remainingTime);
-  useEffect(() => {
-    const timer = setInterval(() => setRemaining(remainingTime()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-  return (
-    <div className="countdown" aria-label="Countdown to the wedding">
-      {Object.entries(remaining).map(([unit, value], index) => (
-        <CountdownUnit
-          key={unit}
-          unit={unit}
-          value={value}
-          separator={index > 0}
-        />
-      ))}
-    </div>
-  );
-}
-
-function CountdownUnit({ unit, value, separator }) {
-  return (
-    <>
-      {separator && <i aria-hidden="true">:</i>}
-      <div>
-        <strong>{String(value).padStart(2, "0")}</strong>
-        <span>{unit.toUpperCase()}</span>
-      </div>
-    </>
-  );
-}
-
-export function RsvpForm() {
+import { useState } from "react";
+export default function RsvpForm() {
   const [attending, setAttending] = useState("yes");
   const [status, setStatus] = useState("");
   function submit(event) {
@@ -128,43 +81,4 @@ export function RsvpForm() {
       </p>
     </form>
   );
-}
-
-export function downloadCalendar() {
-  const date = new Date(wedding.date);
-  const stamp = (value) =>
-    value
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .replace(/\.\d{3}/, "");
-  const escape = (value) =>
-    value
-      .replace(/\\/g, "\\\\")
-      .replace(/\r?\n/g, "\\n")
-      .replace(/,/g, "\\,")
-      .replace(/;/g, "\\;");
-  const content = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Wedding Invitation//EN",
-    "BEGIN:VEVENT",
-    `UID:${stamp(date)}@wedding.local`,
-    "DTSTAMP:" + stamp(new Date()),
-    "DTSTART:" + stamp(date),
-    "DTEND:" + stamp(new Date(+date + 4 * 3600000)),
-    "SUMMARY:" + escape(`${wedding.bride} & ${wedding.groom} — Wedding (Demo)`),
-    "LOCATION:" + escape(`${wedding.venue}, ${wedding.address}`),
-    "DESCRIPTION:Sample wedding invitation event. Replace with real wedding details.",
-    "END:VEVENT",
-    "END:VCALENDAR",
-    "",
-  ].join("\r\n");
-  const url = URL.createObjectURL(
-    new Blob([content], { type: "text/calendar;charset=utf-8" }),
-  );
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "wedding-date.ics";
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

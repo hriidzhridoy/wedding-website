@@ -1,60 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap");
-@layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-
-/* Preserve original typography and decorative styling; layouts use Tailwind. */
 @layer components {
-  :root {
-    --wine: #861932;
-    --dark: #502430;
-    --paper: #fffdf9;
-    --line: #dfc9c9;
-    --muted: #755e62;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-  }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--wine);
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-  }
-  body.closed {
-    overflow: hidden;
-  }
-  button,
-  input,
-  select,
-  textarea {
-    font: inherit;
-  }
-  button,
-  a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  button {
-    cursor: pointer;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  button:focus-visible,
-  a:focus-visible,
-  input:focus-visible,
-  select:focus-visible,
-  textarea:focus-visible {
-    outline: 3px solid #c08b39;
-    outline-offset: 5px;
-  }
   .monogram {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: 30px;
@@ -163,30 +107,6 @@
     max-width: 560px;
     margin: 0 auto;
     color: var(--muted);
-  }
-  .big-date {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 34px;
-  }
-  .big-date > span {
-    font:
-      100px/1 "Cormorant Garamond",
-      Georgia,
-      serif;
-  }
-  .big-date > div {
-    text-align: left;
-    letter-spacing: 3px;
-    border-left: 1px solid var(--line);
-    padding-left: 24px;
-    font-size: 14px;
-  }
-  .big-date b {
-    font-weight: 400;
-    font-size: 24px;
   }
   .time-label {
     font-size: 12px;
@@ -430,113 +350,6 @@
     color: var(--wine);
     padding: 10px;
   }
-  .curtain-stage {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    color: #fff7e9;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    transition: none;
-  }
-  .curtain {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50.2%;
-    background: repeating-linear-gradient(
-      90deg,
-      #5f0b22 0%,
-      #9a1939 6%,
-      #b92a45 9%,
-      #790f2c 14%,
-      #510a20 20%
-    );
-    box-shadow: inset 0 0 100px #2c001862;
-    transition:
-      transform 1.8s cubic-bezier(0.65, 0, 0.2, 1),
-      border-radius 1.8s;
-    will-change: transform;
-  }
-  .left {
-    left: 0;
-    border-right: 1px solid #e5b57455;
-  }
-  .right {
-    right: 0;
-    transform: scaleX(-1);
-  }
-  .opening-copy {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 24px;
-    transition:
-      opacity 0.35s,
-      transform 0.5s;
-  }
-  .opening-copy > .eyebrow {
-    font-size: 10px;
-    letter-spacing: 3px;
-  }
-  .opening-names {
-    font:
-      70px/1.1 "Cormorant Garamond",
-      Georgia,
-      serif;
-    margin: 35px 0 40px;
-  }
-  .opening-names i {
-    display: block;
-    font-size: 36px;
-    margin: 8px;
-  }
-  .seal {
-    border-radius: 50%;
-    width: 105px;
-    height: 105px;
-    border: 1px solid #f0cc8b;
-    outline: 1px solid #f0cc8b88;
-    outline-offset: 6px;
-    background: #7b1429;
-    box-shadow: 0 6px 30px #30011370;
-    color: #f4dbac;
-    font:
-      32px "Cormorant Garamond",
-      Georgia,
-      serif;
-    transition: transform 0.25s;
-  }
-  .seal span {
-    font-size: 21px;
-  }
-  .seal:hover {
-    transform: scale(1.08);
-  }
-  .tap {
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-top: 34px;
-  }
-  .opened .left {
-    transform: translateX(-102%);
-    border-radius: 0 0 70% 0;
-  }
-  .opened .right {
-    transform: translateX(102%) scaleX(-1);
-    border-radius: 0 0 70% 0;
-  }
-  .opened .opening-copy {
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-  }
-  .curtain-stage.opened {
-    transition: visibility 0s 1.8s;
-    visibility: hidden;
-    pointer-events: none;
-  }
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -548,22 +361,7 @@
     opacity: 1;
     transform: none;
   }
-  .confetti {
-    position: fixed;
-    top: -20px;
-    z-index: 90;
-    width: 7px;
-    height: 12px;
-    background: var(--wine);
-    pointer-events: none;
-    animation: fall 4s ease-in forwards;
-  }
-  @keyframes fall {
-    to {
-      transform: translate3d(60px, 105vh, 0) rotate(600deg);
-      opacity: 0;
-    }
-  }
+
   @media (min-width: 1000px) {
     .hero:before,
     .hero:after {
@@ -693,24 +491,6 @@
     .opening-copy > .eyebrow {
       max-width: 230px;
       margin: auto;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *:before,
-    *:after {
-      animation: none !important;
-      transition: none !important;
-    }
-    .reveal {
-      opacity: 1;
-      transform: none;
-    }
-    .confetti {
-      display: none;
     }
   }
 }

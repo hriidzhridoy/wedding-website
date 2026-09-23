@@ -1,0 +1,155 @@
+@layer components {
+  .scratch-stage {
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    padding: 56px 24px;
+    text-align: center;
+    background: radial-gradient(
+      ellipse at 50% 44%,
+      #fffdf9 0%,
+      #fbf3eb 62%,
+      #f5e7e5 100%
+    );
+    border-bottom: 1px solid var(--line);
+  }
+  .scratch-stage-inner {
+    width: 100%;
+    max-width: 760px;
+  }
+  .scratch-stage .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  .scratch-flourish {
+    display: block;
+    font:
+      48px/1 Georgia,
+      serif;
+    color: #b29665;
+    margin: 26px 0 20px;
+  }
+  .scratch-stage h2 {
+    font-size: clamp(40px, 6vw, 68px);
+    max-width: 640px;
+    margin: auto;
+  }
+  .scratch-stage h2:focus {
+    outline: none;
+  }
+  .scratch-invitation {
+    font:
+      italic 26px "Cormorant Garamond",
+      Georgia,
+      serif;
+    margin: 20px 0 10px;
+    color: var(--muted);
+  }
+  #scratch-help {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 330px;
+    margin: 0 auto;
+  }
+  .scratch-date {
+    max-width: 620px;
+    margin: 38px auto 24px;
+  }
+  .scratch-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+  .scratch-surface {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #c4a16b;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow:
+      0 8px 24px #5024300c,
+      0 0 0 5px #ffffff80;
+    touch-action: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  .scratch-surface canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.45s;
+  }
+  .scratch-surface.is-revealed {
+    touch-action: auto;
+  }
+  .scratch-surface.is-revealed canvas {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .scratch-value {
+    font:
+      500 clamp(28px, 5vw, 56px) "Cormorant Garamond",
+      Georgia,
+      serif;
+    color: var(--wine);
+  }
+  .scratch-month {
+    font-size: clamp(18px, 3vw, 34px);
+  }
+  .scratch-status {
+    min-height: 24px;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 24px 0 12px;
+  }
+  .scratch-next {
+    min-height: 46px;
+    display: grid;
+    place-items: center;
+  }
+  .scratch-skip {
+    border: 0;
+    padding: 10px;
+    background: none;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-size: 12px;
+  }
+  .invitation-content {
+    animation: invitation-appear 0.8s ease both;
+  }
+  @keyframes invitation-appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 700px) {
+    .scratch-stage {
+      padding: 36px 22px;
+    }
+    .scratch-date {
+      margin-top: 30px;
+    }
+    .scratch-stage .eyebrow {
+      font-size: 10px;
+    }
+    .scratch-invitation {
+      font-size: 23px;
+    }
+    .scratch-flourish {
+      margin: 18px 0;
+    }
+  }
+}
