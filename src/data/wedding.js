@@ -1,7 +1,7 @@
 // Edit the sample wedding details here. This is a demo; RSVP submissions are not sent.
 export const wedding = {
-  bride: "Amira",
-  groom: "Rayhan",
+  bride: "Mouri",
+  groom: "Rifat",
   date: "2026-12-18T18:30:00+06:00",
   dateLabel: "FRIDAY, 18 DECEMBER 2026",
   city: "DHAKA, BANGLADESH",

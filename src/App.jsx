@@ -73,7 +73,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title = `${wedding.bride} & ${wedding.groom} — Wedding Invitation`;
+    document.title = `${wedding.groom} & ${wedding.bride} — Wedding Invitation`;
   }, []);
   function replay() {
     window.scrollTo({ top: 0, behavior: "instant" });

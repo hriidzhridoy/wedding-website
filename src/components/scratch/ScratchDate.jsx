@@ -36,7 +36,7 @@ export default function ScratchDate({ onComplete, headingRef }) {
     >
       <div className="scratch-stage-inner">
         <p className="eyebrow">
-          {wedding.bride} &amp; {wedding.groom}
+          {wedding.groom} &amp; {wedding.bride}
         </p>
         <span className="scratch-flourish" aria-hidden="true">
           ♡

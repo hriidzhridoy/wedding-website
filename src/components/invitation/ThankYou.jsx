@@ -11,7 +11,7 @@ export default function ThankYou() {
         </h2>
         <p>We can't wait to celebrate with you.</p>
         <p className="signature">
-          <span>{wedding.bride}</span> &amp; <span>{wedding.groom}</span>
+          <span>{wedding.groom}</span> &amp; <span>{wedding.bride}</span>
         </p>
         <span className="small-star">✧</span>
       </div>

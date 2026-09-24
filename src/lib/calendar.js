@@ -21,7 +21,7 @@ export function downloadCalendar() {
     "DTSTAMP:" + stamp(new Date()),
     "DTSTART:" + stamp(date),
     "DTEND:" + stamp(new Date(+date + 4 * 3600000)),
-    "SUMMARY:" + escape(`${wedding.bride} & ${wedding.groom} — Wedding (Demo)`),
+    "SUMMARY:" + escape(`${wedding.groom} & ${wedding.bride} — Wedding (Demo)`),
     "LOCATION:" + escape(`${wedding.venue}, ${wedding.address}`),
     "DESCRIPTION:Sample wedding invitation event. Replace with real wedding details.",
     "END:VEVENT",

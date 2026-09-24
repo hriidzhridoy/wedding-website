@@ -40,9 +40,9 @@ export default function Curtain({ opened, onOpen, onComplete, buttonRef }) {
       <div className="opening-copy">
         <p className="eyebrow">A LITTLE INVITATION. A LIFETIME OF LOVE.</p>
         <p className="opening-names">
-          <span>{wedding.bride}</span>
-          <i>&amp;</i>
           <span>{wedding.groom}</span>
+          <i>&amp;</i>
+          <span>{wedding.bride}</span>
         </p>
         <button
           ref={buttonRef}

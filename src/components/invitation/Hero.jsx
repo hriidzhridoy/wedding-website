@@ -31,9 +31,9 @@ export default function Hero({ headingRef, dateRevealed, visible }) {
         <p className="eyebrow hero-enter" style={{ "--enter-order": 0 }}>TOGETHER WITH OUR FAMILIES</p>
         <p className="intro hero-enter" style={{ "--enter-order": 1 }}>With full hearts, we invite you to celebrate</p>
         <h1 className="hero-enter" style={{ "--enter-order": 2 }} ref={headingRef} tabIndex={-1}>
-          <span>{wedding.bride}</span>
-          <em>&</em>
           <span>{wedding.groom}</span>
+          <em>&</em>
+          <span>{wedding.bride}</span>
         </h1>
         <div className="date-line hero-enter" style={{ "--enter-order": 3 }}>
           <span>
