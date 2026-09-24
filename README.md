@@ -1,48 +1,205 @@
-# Wedding invitation
+# Interactive Wedding Invitation
 
-React + Vite + Tailwind CSS wedding invitation with a curtain opening, circular scratch-date reveal, responsive design, countdown, calendar download, and demo RSVP.
+An elegant, responsive wedding invitation built with **React** and **Vite**. It turns a traditional invitation into an interactive experience with a curtain reveal, live countdown, scratch-card interaction, venue information, calendar download, and RSVP interface.
 
-## Invitation flow
+> This is an independent implementation inspired by a publicly visible wedding-invitation concept. It is not affiliated with the original commercial product.
 
-1. Open the original full-screen burgundy curtains to see the hero introduction and nine gentle heart balloons. Gathered SVG drapes frame the hero after the curtains open.
-2. Scroll from the hero to the circular date reveal. Reveal the day, month, and year with a short swipe, tap, or keyboard activation. A wider brush and 16% reveal threshold make scratching light. An optional “Reveal the date for me” button reveals all three.
-3. Completing the date fires the side cannons once and displays the full invitation below. Until then, the navigation, venue, countdown, RSVP, and footer are not rendered.
-4. Replay starts a fresh session, resetting the scratch progress and effects. Both effects respect reduced-motion preferences.
+## Live Demo
 
-## Development
+[View the live website](https://framer-wedding-website.vercel.app/) · [Browse the source code](https://github.com/hriidzhridoy/wedding-website)
 
-Requires Node.js 20.19+ or 22.12+.
+## Preview
 
-```sh
+![Wedding invitation preview showing red curtains and the couple's names](public/screenshots/preview.png)
+
+## Features
+
+- Animated curtain opening
+- Personalized couple and wedding details
+- Live countdown to the wedding
+- Scratch-card interaction
+- Scroll-reveal animations
+- Venue details and map link
+- Downloadable calendar event
+- Dress-code and gift-information sections
+- Responsive design for mobile, tablet, and desktop
+- Reduced-motion support for accessibility
+- RSVP interface ready to connect to a backend or form service
+- Playwright end-to-end test setup
+
+## Built With
+
+- React
+- Vite
+- JavaScript
+- CSS
+- Playwright
+
+## Project Structure
+
+```text
+wedding-website/
+├── public/                     # Static assets
+├── src/
+│   ├── components/
+│   │   ├── effects/            # Visual effects and animation components
+│   │   ├── invitation/         # Wedding invitation sections
+│   │   ├── rsvp/               # RSVP interface components
+│   │   └── scratch/            # Scratch-card components
+│   ├── data/
+│   │   └── wedding.js          # Couple, date, venue, and invitation content
+│   ├── hooks/
+│   │   ├── useReducedMotion.js
+│   │   ├── useScratchSurface.js
+│   │   └── useScrollReveal.js
+│   ├── lib/
+│   │   ├── calendar.js         # Calendar event generation
+│   │   ├── scratchCanvas.js    # Scratch-card canvas logic
+│   │   └── weddingDate.js      # Wedding date and countdown utilities
+│   ├── styles/                 # Application styles
+│   ├── App.jsx
+│   └── main.jsx
+├── tests/                      # End-to-end tests
+├── index.html
+├── package.json
+├── playwright.config.js
+└── vite.config.js
+```
+
+## Getting Started
+
+### Requirements
+
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/hriidzhridoy/wedding-website.git
+cd wedding-website
+```
+
+Install the dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-On Windows PowerShell, use `npm.cmd` if the execution policy blocks `npm.ps1`.
+Vite will print a local address, usually:
 
-## Production
+```text
+http://localhost:5173
+```
 
-```sh
+To open the site on another device connected to the same Wi-Fi network, run:
+
+```bash
+npm run dev -- --host
+```
+
+## Customization
+
+Most wedding information is kept in one place:
+
+```text
+src/data/wedding.js
+```
+
+Update that file to change details such as:
+
+- Bride and groom names
+- Wedding date and time
+- Venue name and address
+- Google Maps link
+- Invitation message
+- Dress code
+- Gift message
+- RSVP deadline
+
+Place images, icons, music, and other static files inside `public/`. Update the styles inside `src/styles/` to change the colors, typography, spacing, or animations.
+
+## Available Commands
+
+```bash
+npm run dev       # Start the local development server
+npm run build     # Create a production build
+npm run preview   # Preview the production build locally
+```
+
+Run the Playwright tests with:
+
+```bash
+npx playwright test
+```
+
+If Playwright browsers are not installed yet, run:
+
+```bash
+npx playwright install
+```
+
+## Production Build
+
+Create an optimized production build:
+
+```bash
 npm run build
+```
+
+The generated website will be placed in the `dist/` directory. Test it locally with:
+
+```bash
 npm run preview
 ```
 
-Deploy the generated `dist` folder to a static web host. Serve it over HTTP; opening the HTML directly as a file does not load the React modules. Relative asset paths support hosting in a subdirectory.
+## Deployment
 
-Run `npm test` after building to check desktop/mobile gating, short mouse and touch swipes, taps, keyboard and optional reveal, confetti timing, calendar downloads, RSVP previews, replay, and reduced motion. Tests use a locally installed Google Chrome browser.
+This Vite project can be deployed to platforms such as Vercel, Netlify, GitHub Pages, or any server that can host static files.
 
-## Customize
+For Vercel or Netlify, use:
 
-- `src/data/wedding.js`: editable wedding details. Dates use Bangladesh time (+06:00). Keep `dateLabel` and `time` in sync with `date`.
-- `src/App.jsx`: session lifecycle and the sealed → scratch → revealed flow.
-- `src/components/invitation/`: curtain, layout, and individual invitation sections.
-- `src/components/scratch/`: circular scratch controls and date-reveal screen.
-- `src/components/effects/`: opening heart balloons and five paired side-cannon volleys (1,100 pieces).
-- `src/components/rsvp/`: demo form and validation.
-- `src/hooks/`: scratch pointer interactions, reduced-motion preference, and scoped scroll-reveal observer.
-- `src/lib/`: date formatting, calendar generation, scratch coating, and coverage calculations. Scratch size, brush, and reveal threshold live in `scratchCanvas.js`.
-- `src/styles/`: base styles and separate invitation, curtain, scratch, and effects stylesheets. Tailwind utilities are imported without Preflight to preserve typography.
-- `public/venue.png`: venue illustration.
-- `index.html`: initial title, description, and favicon.
+```text
+Build command: npm run build
+Output directory: dist
+```
 
-The RSVP is a preview only. It does not transmit or store guest information. Connect an RSVP service or backend before using this for a real wedding, and update the demo notices, sample venue note and calendar event text. Fonts load from Google Fonts, with local serif and sans-serif fallbacks. The venue illustration is generated artwork, not a picture of a real venue.
+## RSVP Status
+
+The current RSVP section is a front-end interface. Connect it to a backend, database, email service, Google Form, Formspree, or another form provider before collecting real guest responses.
+
+Never commit API keys, passwords, guest lists, or private wedding information to a public repository. Put secrets in an `.env` file and keep that file in `.gitignore`.
+
+## Background
+
+This project began when a friend shared a wedding-website Reel and asked whether a similar experience could be created for his upcoming wedding. The original product was closed source, so the visible experience was studied and rebuilt as an independent React application with reusable components, centralized wedding data, custom hooks, and responsive interactions.
+
+## Future Improvements
+
+- Store RSVP responses in a database
+- Send confirmation emails
+- Add a wedding photo gallery
+- Add optional background music controls
+- Support multiple languages
+- Create an admin page for updating wedding details
+- Generate a unique invitation link for each guest
+
+## License
+
+Add a license before allowing other people to reuse the project. The [MIT License](https://opensource.org/license/mit) is a common choice for an open-source portfolio project.
+
+## Author
+
+Created by **[@hriidzhridoy](https://github.com/hriidzhridoy)**.
+
+- Repository: [github.com/hriidzhridoy/wedding-website](https://github.com/hriidzhridoy/wedding-website)
+
+If you found this project useful, consider giving the repository a star.
