@@ -2,9 +2,10 @@
   :root {
     --wine: #861932;
     --dark: #502430;
-    --paper: #fffdf9;
+    --paper: #ffffff;
     --line: #dfc9c9;
     --muted: #755e62;
+    color-scheme: light;
   }
   * {
     box-sizing: border-box;

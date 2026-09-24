@@ -5,12 +5,7 @@
     min-height: 100svh;
     padding: 56px 24px;
     text-align: center;
-    background: radial-gradient(
-      ellipse at 50% 44%,
-      #fffdf9 0%,
-      #fbf3eb 62%,
-      #f5e7e5 100%
-    );
+    background: var(--paper);
     border-bottom: 1px solid var(--line);
   }
   .scratch-stage-inner {

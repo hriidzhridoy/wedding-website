@@ -123,7 +123,7 @@
   .celebration {
     padding: 90px 24px;
     text-align: center;
-    background: #f7edeb;
+    background: var(--paper);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
@@ -166,7 +166,7 @@
   .countdown i {
     font-style: normal;
     margin-top: 5px;
-    color: #af838b;
+    color: var(--muted);
   }
   .text-button {
     border: 0;
@@ -218,7 +218,7 @@
   }
   .button:hover {
     background: var(--dark);
-    color: white;
+    color: var(--paper);
   }
   .sample-note {
     font-size: 12px !important;
@@ -301,7 +301,7 @@
     resize: vertical;
   }
   ::placeholder {
-    color: #988388;
+    color: var(--muted);
   }
   fieldset {
     border: 0;
@@ -330,7 +330,7 @@
   }
   .solid {
     background: var(--wine);
-    color: white;
+    color: var(--paper);
     border: 1px solid var(--wine);
     width: 100%;
     justify-content: space-between;
@@ -341,7 +341,7 @@
   }
   .thank-you {
     padding: 55px 24px 70px;
-    background: #f7edeb;
+    background: var(--paper);
   }
   .thank-you-inner {
     border: 1px solid var(--wine);
@@ -415,7 +415,7 @@
     }
     .hero {
       min-height: 100svh;
-      padding: clamp(72px, 10svh, 96px) 16px 34px;
+      padding: clamp(120px, 18svh, 180px) 16px 34px;
     }
     .hero .eyebrow {
       max-width: 36%;
