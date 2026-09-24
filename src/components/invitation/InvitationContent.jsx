@@ -17,21 +17,6 @@ export default function InvitationContent({ onReplay }) {
       className="invitation-content"
       tabIndex={-1}
     >
-      {/* <header className="flex h-[88px] items-center justify-between border-0 border-b border-solid border-[var(--line)] px-[6%] max-[700px]:h-[72px]">
-        <a href="#home" className="monogram">
-          {initials}
-        </a>
-        <nav
-          className="flex items-center gap-8 text-sm max-[700px]:gap-4 max-[700px]:text-xs"
-          aria-label="Main navigation"
-        >
-          <a href="#celebration">The day</a>
-          <a href="#venue">The place</a>
-          <a href="#rsvp" className="nav-rsvp">
-            RSVP
-          </a>
-        </nav>
-      </header> */}
       <Celebration />
       <Venue />
       <GuestDetails />
