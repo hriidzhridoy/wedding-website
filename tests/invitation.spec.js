@@ -178,3 +178,18 @@ test("tapping circles unlocks the invitation only after all three", async ({
   await expect(page.locator("#invitation-content")).toHaveCount(1);
   await expect(page.locator(".scratch-surface.is-revealed")).toHaveCount(3);
 });
+
+test("reload starts at the hero instead of the scratch section", async ({ page }) => {
+  await openInvitation(page);
+  await page.locator("#scratch-date").scrollIntoViewIfNeeded();
+  await page.evaluate(() => {
+    window.location.hash = "scratch-date";
+  });
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+  await page.reload();
+
+  await expect(page).toHaveURL(/\/$/);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await expect(page.locator("#home")).toBeInViewport();
+});

@@ -1,5 +1,6 @@
 import { wedding } from "../../data/wedding.js";
 import { initials } from "../../lib/weddingDate.js";
+import CurtainFabric from "./CurtainFabric.jsx";
 
 export default function Hero({ headingRef, dateRevealed }) {
   return (
@@ -22,6 +23,10 @@ export default function Hero({ headingRef, dateRevealed }) {
         )}
       </header>
       <section className="hero" id="home">
+        {/* <div className="hero-drapes" aria-hidden="true">
+          <CurtainFabric side="left" />
+          <CurtainFabric side="right" />
+        </div> */}
         <p className="eyebrow">TOGETHER WITH OUR FAMILIES</p>
         <p className="intro">With full hearts, we invite you to celebrate</p>
         <h1 ref={headingRef} tabIndex={-1}>

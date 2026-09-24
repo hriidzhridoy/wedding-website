@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { wedding } from "./data/wedding.js";
 import useReducedMotion from "./hooks/useReducedMotion.js";
 import Curtain from "./components/invitation/Curtain.jsx";
@@ -60,6 +60,25 @@ function InvitationSession({ onReplay }) {
 
 export default function App() {
   const [session, setSession] = useState(0);
+
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}`,
+      );
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
   useEffect(() => {
     document.title = `${wedding.bride} & ${wedding.groom} — Wedding Invitation`;
   }, []);
