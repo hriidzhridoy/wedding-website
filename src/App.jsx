@@ -41,7 +41,7 @@ function InvitationSession({ onReplay }) {
         buttonRef={sealRef}
       />
       <main inert={!openingFinished}>
-        <Hero headingRef={heroHeadingRef} dateRevealed={revealed} />
+        <Hero headingRef={heroHeadingRef} dateRevealed={revealed} visible={openingFinished} />
         <ScratchDate onComplete={() => setStage("revealed")} />
         {revealed && <InvitationContent onReplay={onReplay} />}
       </main>
