@@ -4,7 +4,7 @@ async function openInvitation(page) {
   await page.goto("/");
   await expect(page.locator("main")).toHaveAttribute("inert", "");
   await page.getByRole("button", { name: "Open wedding invitation" }).click();
-  await expect(page.locator("#home h1")).toBeFocused();
+  await expect(page.locator("#home h1")).toBeFocused({ timeout: 8000 });
   await expect(page.locator("main")).not.toHaveAttribute("inert", "");
 }
 
@@ -147,7 +147,7 @@ for (const width of [390, 1280]) {
     ).toBeFocused();
     await assertLocked(page);
     await page.getByRole("button", { name: "Open wedding invitation" }).click();
-    await expect(page.locator("#home h1")).toBeFocused();
+    await expect(page.locator("#home h1")).toBeFocused({ timeout: 8000 });
     await expect(page.locator(".heart-balloon")).toHaveCount(9);
     expect(errors).toEqual([]);
   });

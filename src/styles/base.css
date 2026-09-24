@@ -21,8 +21,10 @@
     font-size: 16px;
     line-height: 1.7;
   }
+  html.closed,
   body.closed {
     overflow: hidden;
+    overscroll-behavior: none;
   }
   button,
   input,

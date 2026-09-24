@@ -18,11 +18,38 @@
     line-height: 1.8;
   }
   .hero {
-    min-height: 790px;
+    min-height: 100svh;
     position: relative;
     text-align: center;
     padding: 66px 24px 50px;
     overflow: hidden;
+  }
+  .hero > .eyebrow {
+    max-width: min(38%, 440px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero .intro {
+    max-width: min(46%, 520px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 {
+    flex-direction: column;
+    gap: 0;
+    max-width: min(56%, 720px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em {
+    margin: 6px 0;
+  }
+  .hero .date-line,
+  .hero .hero-quote,
+  .hero .scroll-link {
+    max-width: min(58%, 620px);
+    margin-left: auto;
+    margin-right: auto;
   }
   .intro {
     font-family: "Cormorant Garamond", Georgia, serif;
@@ -387,42 +414,54 @@
       padding: 5px 16px;
     }
     .hero {
-      min-height: 760px;
-      padding-top: 47px;
+      min-height: 100svh;
+      padding: clamp(72px, 10svh, 96px) 16px 34px;
     }
     .hero .eyebrow {
-      font-size: 10px;
-      letter-spacing: 2px;
+      max-width: 36%;
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      line-height: 1.65;
     }
     .intro {
-      font-size: 20px;
-      max-width: 250px;
-      margin: 15px auto;
+      font-size: clamp(16px, 4.5vw, 19px);
+      max-width: 44%;
+      line-height: 1.5;
+      margin: 14px auto;
     }
-    h1 {
+    .hero h1 {
       flex-direction: column;
       gap: 0;
-      font-size: 93px;
+      max-width: 58%;
+      font-size: clamp(56px, 16vw, 68px);
       line-height: 0.98;
-      letter-spacing: -3px;
-      margin: 28px 0;
+      letter-spacing: -2px;
+      margin: 20px auto;
     }
-    h1 em {
-      font-size: 40px;
-      margin: 8px 0;
+    .hero h1 em {
+      font-size: 32px;
+      margin: 5px 0;
     }
-    .date-line {
+    .hero .date-line {
       flex-direction: column;
       gap: 3px;
-      font-size: 10px;
-      letter-spacing: 1.7px;
+      max-width: 50%;
+      font-size: 8px;
+      letter-spacing: 1.35px;
+      line-height: 1.55;
     }
     .date-line .small-star {
       font-size: 17px;
     }
-    .hero-quote {
-      font-size: 26px;
-      margin: 25px 0;
+    .hero .hero-quote {
+      max-width: 58%;
+      font-size: 23px;
+      margin: 24px auto;
+    }
+    .hero .scroll-link {
+      max-width: 62%;
+      font-size: 9px;
+      line-height: 1.5;
     }
     .hero-edge {
       display: none;

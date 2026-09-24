@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { wedding } from "./data/wedding.js";
-import useReducedMotion from "./hooks/useReducedMotion.js";
 import Curtain from "./components/invitation/Curtain.jsx";
 import Hero from "./components/invitation/Hero.jsx";
 import InvitationContent from "./components/invitation/InvitationContent.jsx";
@@ -14,26 +13,19 @@ function InvitationSession({ onReplay }) {
   const [openingFinished, setOpeningFinished] = useState(false);
   const sealRef = useRef(null);
   const heroHeadingRef = useRef(null);
-  const reducedMotion = useReducedMotion();
   const opened = stage !== "sealed";
   const revealed = stage === "revealed";
 
   useEffect(() => {
-    document.body.classList.toggle("closed", !opened);
+    const locked = !openingFinished;
+    document.documentElement.classList.toggle("closed", locked);
+    document.body.classList.toggle("closed", locked);
     if (!opened) sealRef.current?.focus({ preventScroll: true });
-    return () => document.body.classList.remove("closed");
-  }, [opened]);
-
-  useEffect(() => {
-    if (!opened || openingFinished) return;
-    const timer = setTimeout(
-      () => {
-        setOpeningFinished(true);
-      },
-      reducedMotion ? 0 : 1800,
-    );
-    return () => clearTimeout(timer);
-  }, [opened, openingFinished, reducedMotion]);
+    return () => {
+      document.documentElement.classList.remove("closed");
+      document.body.classList.remove("closed");
+    };
+  }, [opened, openingFinished]);
 
   useEffect(() => {
     // Focus the introduction after React removes inert from the invitation.
@@ -45,6 +37,7 @@ function InvitationSession({ onReplay }) {
       <Curtain
         opened={opened}
         onOpen={() => setStage("scratch")}
+        onComplete={() => setOpeningFinished(true)}
         buttonRef={sealRef}
       />
       <main inert={!openingFinished}>

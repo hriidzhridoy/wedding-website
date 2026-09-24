@@ -1,11 +1,10 @@
 import { wedding } from "../../data/wedding.js";
 import { initials } from "../../lib/weddingDate.js";
-import CurtainFabric from "./CurtainFabric.jsx";
 
 export default function Hero({ headingRef, dateRevealed }) {
   return (
     <>
-      <header className="flex h-[88px] items-center justify-between border-0 border-b border-solid border-[var(--line)] px-[6%] max-[700px]:h-[72px]">
+      {/* <header className="flex h-[88px] items-center justify-between border-0 border-b border-solid border-[var(--line)] px-[6%] max-[700px]:h-[72px]">
         <a href="#home" className="monogram">
           {initials}
         </a>
@@ -21,12 +20,14 @@ export default function Hero({ headingRef, dateRevealed }) {
             </a>
           </nav>
         )}
-      </header>
+      </header> */}
       <section className="hero" id="home">
-        {/* <div className="hero-drapes" aria-hidden="true">
-          <CurtainFabric side="left" />
-          <CurtainFabric side="right" />
-        </div> */}
+        <img
+          className="hero-curtain"
+          src={`${import.meta.env.BASE_URL}curtain-open.jpg`}
+          alt=""
+          aria-hidden="true"
+        />
         <p className="eyebrow">TOGETHER WITH OUR FAMILIES</p>
         <p className="intro">With full hearts, we invite you to celebrate</p>
         <h1 ref={headingRef} tabIndex={-1}>

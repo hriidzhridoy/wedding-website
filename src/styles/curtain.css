@@ -1,13 +1,13 @@
 @layer components {
-  .hero-drapes {
+  .hero-curtain {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     pointer-events: none;
   }
-  .hero-drapes .curtain-fabric {
-    width: clamp(70px, 20vw, 260px);
-  }
-  .hero > :not(.hero-drapes) {
+  .hero > :not(.hero-curtain) {
     position: relative;
   }
   .hero h1:focus {
@@ -21,9 +21,6 @@
     display: none;
   }
   @media (max-width: 700px) {
-    .hero-drapes .curtain-fabric {
-      width: 24%;
-    }
     .hero > .eyebrow {
       max-width: 200px;
       margin-left: auto;
@@ -54,7 +51,8 @@
     display: grid;
     place-items: center;
     overflow: hidden;
-    transition: none;
+    background: #4c071b;
+    transition: opacity 0.25s, visibility 0s 0.25s;
   }
   .curtain-fabric {
     position: absolute;
@@ -73,18 +71,14 @@
     right: 0;
     transform: scaleX(-1);
   }
-  .curtain {
+  .curtain-video {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50.2%;
-    background: repeating-linear-gradient(90deg, #5f0b22 0%, #9a1939 6%, #b92a45 9%, #790f2c 14%, #510a20 20%);
-    box-shadow: inset 0 0 100px #2c001862;
-    transition: transform 1.8s cubic-bezier(.65, 0, .2, 1), border-radius 1.8s;
-    will-change: transform;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-  .curtain-left { left: 0; border-right: 1px solid #e5b57455; }
-  .curtain-right { right: 0; transform: scaleX(-1); }
   .opening-copy {
     position: relative;
     z-index: 1;
@@ -139,23 +133,16 @@
     letter-spacing: 3px;
     margin-top: 34px;
   }
-  .opened .curtain-left {
-    transform: translateX(-102%);
-    border-radius: 0 0 70% 0;
-  }
-  .opened .curtain-right {
-    transform: translateX(102%) scaleX(-1);
-    border-radius: 0 0 70% 0;
-  }
   .opened .opening-copy {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
   }
   .curtain-stage.opened {
-    background: transparent;
-    transition: visibility 0s 1.8s;
-    visibility: hidden;
     pointer-events: none;
+  }
+  .curtain-stage.finished {
+    opacity: 0;
+    visibility: hidden;
   }
 }
