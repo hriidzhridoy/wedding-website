@@ -41,10 +41,25 @@ function InvitationSession({ onReplay }) {
         buttonRef={sealRef}
       />
       <main inert={!openingFinished}>
-        <Hero headingRef={heroHeadingRef} dateRevealed={revealed} visible={openingFinished} />
+        <Hero
+          headingRef={heroHeadingRef}
+          dateRevealed={revealed}
+          visible={openingFinished}
+        />
         <ScratchDate onComplete={() => setStage("revealed")} />
         {revealed && <InvitationContent onReplay={onReplay} />}
       </main>
+      {revealed && (
+        <a
+          className="developer-watermark"
+          href="https://www.facebook.com/asif.mamun.3154"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Developed by Asif Mamun — Facebook profile (opens in a new tab)"
+        >
+          Developed by <span>Asif Hridoy</span>
+        </a>
+      )}
       <HeartBalloons active={openingFinished && !revealed} />
       <SideCannons burst={revealed ? 1 : 0} />
     </>

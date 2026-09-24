@@ -27,6 +27,28 @@
     overflow: hidden;
     overscroll-behavior: none;
   }
+  .developer-watermark {
+    position: fixed;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 110;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: #ffffffed;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+  .developer-watermark span {
+    color: var(--wine);
+    font-weight: 600;
+  }
+  .developer-watermark:hover {
+    background: var(--paper);
+    border-color: var(--wine);
+  }
   button,
   input,
   select,
