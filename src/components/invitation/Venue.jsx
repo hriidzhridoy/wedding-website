@@ -8,7 +8,7 @@ export default function Venue() {
       <div className="venue-image">
         <img
           src={`${import.meta.env.BASE_URL}venue.png`}
-          alt="Burgundy line illustration of a romantic garden wedding pavilion"
+          alt="Burgundy pen-and-ink illustration of the Four Seasons restaurant exterior"
           loading="lazy"
           width="1536"
           height="1024"
