@@ -13,6 +13,30 @@
   .hero h1:focus {
     outline: none;
   }
+  .hero-invitation {
+    max-width: min(42%, 460px);
+    margin: 0 auto 24px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .hero-invitation span {
+    display: block;
+    margin-top: 8px;
+  }
+  .hero-blessing {
+    max-width: min(46%, 520px);
+    margin: 0 auto 24px;
+  }
+  .hero-blessing-arabic {
+    font-family: "Traditional Arabic", "Amiri", "Noto Naskh Arabic", serif;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.9;
+  }
+  .hero-blessing-translation {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
   .hero .hero-edge {
     display: none;
   }
@@ -21,6 +45,22 @@
     display: none;
   }
   @media (max-width: 700px) {
+    .hero-invitation {
+      max-width: 54%;
+      font-size: 11px;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .hero-blessing {
+      max-width: 64%;
+      margin-bottom: 18px;
+    }
+    .hero-blessing-arabic {
+      font-size: clamp(20px, 5.6vw, 30px);
+    }
+    .hero-blessing-translation {
+      font-size: 10px;
+    }
     .hero > .eyebrow {
       max-width: 200px;
       margin-left: auto;
