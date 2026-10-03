@@ -16,7 +16,7 @@ export const wedding = {
   invitation:
     "Some moments are made even more beautiful by the people we share them with. Please join us for an evening of love, laughter, and the beginning of our forever.",
   dressCode:
-    "Festive formal. Sarees, panjabis, suits, and your happiest smiles are warmly welcome.",
+    "There’s no specific dress code — wear whatever makes you feel comfortable, confident and like yourself.",
   gifts:
     "Having you with us is the most meaningful gift of all. Please bring your love, your blessings, and a little room for dessert.",
   rsvpDeadline: null,
