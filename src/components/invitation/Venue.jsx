@@ -30,7 +30,6 @@ export default function Venue() {
         >
           GET DIRECTIONS ↗
         </a>
-        <p className="sample-note">Sample venue for this invitation demo.</p>
       </div>
     </section>
   );

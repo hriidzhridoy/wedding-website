@@ -9,9 +9,11 @@ export default function Rsvp() {
       <div className="rsvp-heading">
         <p className="eyebrow">WE'VE SAVED YOU A SEAT</p>
         <h2>Will you join us?</h2>
-        <p>
-          Kindly reply by <span>{wedding.rsvpDeadline}</span>.
-        </p>
+        {wedding.rsvpDeadline && (
+          <p>
+            Kindly reply by <span>{wedding.rsvpDeadline}</span>.
+          </p>
+        )}
         <p className="demo-tag">DEMO INVITATION</p>
         <p className="demo-explanation">
           Try the form below. No response will be sent or saved.

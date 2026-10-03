@@ -10,6 +10,11 @@ export default function Celebration() {
         A day for love.
         <br />A night to remember.
       </h2>
+      <p className="body-copy">
+        {wedding.groomFullName}
+        <br />&amp;<br />
+        {wedding.brideFullName}
+      </p>
       <p className="body-copy">{wedding.invitation}</p>
       <p className="time-label">
         {datePart("weekday").toUpperCase()} <span>·</span>{" "}
