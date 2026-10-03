@@ -113,19 +113,17 @@ for (const width of [390, 1280]) {
     const calendar = Buffer.concat(chunks).toString();
     expect(calendar).toContain("DTSTART:20261218T123000Z");
     expect(calendar).toContain("DTEND:20261218T163000Z");
+    await page.evaluate(() => { window.open = () => null; });
     await page.getByLabel("Your full name").fill("Test Guest");
-    await page.getByRole("button", { name: "PREVIEW MY RSVP" }).click();
+    await page.getByRole("button", { name: "SEND RSVP ON WHATSAPP" }).click();
     await expect(page.locator("#form-status")).toContainText(
-      "joyfully accepting, 1 guest",
+      "Tap Send in WhatsApp",
     );
     await page.getByLabel("Regretfully decline").check();
     await expect(page.getByLabel("Number of guests")).toBeDisabled();
-    await page.getByRole("button", { name: "PREVIEW MY RSVP" }).click();
+    await page.getByRole("button", { name: "SEND RSVP ON WHATSAPP" }).click();
     await expect(page.locator("#form-status")).toContainText(
-      "regretfully declining",
-    );
-    await expect(page.locator("#form-status")).toContainText(
-      "has not been sent or saved",
+      "Tap Send in WhatsApp",
     );
     const columns = await page
       .locator("#venue")

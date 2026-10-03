@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { wedding } from "../../data/wedding.js";
 export default function RsvpForm() {
   const [attending, setAttending] = useState("yes");
   const [status, setStatus] = useState("");
+  const [whatsAppUrl, setWhatsAppUrl] = useState("");
   function submit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -11,12 +13,25 @@ export default function RsvpForm() {
       event.currentTarget.elements.name.focus();
       return;
     }
-    setStatus(
-      `Thank you, ${name}! Demo preview: ${attending === "yes" ? "joyfully accepting, " + data.get("guests") : "regretfully declining"}. This response has not been sent or saved.`,
-    );
+    const note = data.get("message").trim();
+    const message = [
+      `Hi ${wedding.groom} & ${wedding.bride}!`,
+      "Here's my wedding RSVP:",
+      `Name: ${name}`,
+      `Attending: ${attending === "yes" ? "Yes, joyfully accept" : "No, regretfully decline"}`,
+      `Guests: ${attending === "yes" ? data.get("guests") : "0"}`,
+      ...(note ? [`Message: ${note}`] : []),
+    ].join("\n");
+    const url = `https://wa.me/${wedding.rsvpWhatsApp}?text=${encodeURIComponent(message)}`;
+    setWhatsAppUrl(url);
+    setStatus("Your RSVP message is ready. Tap Send in WhatsApp to complete your reply.");
+    window.open(url, "_blank", "noopener,noreferrer");
   }
   return (
-    <form id="rsvp-form" onSubmit={submit} onChange={() => setStatus("")}>
+    <form id="rsvp-form" onSubmit={submit} onChange={() => {
+      setStatus("");
+      setWhatsAppUrl("");
+    }}>
       <label htmlFor="guest-name">Your full name</label>
       <input
         id="guest-name"
@@ -58,7 +73,7 @@ export default function RsvpForm() {
         className="disabled:opacity-50"
       >
         {[1, 2, 3, 4].map((count) => (
-          <option key={count}>
+          <option key={count} value={count}>
             {count} {count === 1 ? "guest" : "guests"}
           </option>
         ))}
@@ -74,11 +89,16 @@ export default function RsvpForm() {
         maxLength={1000}
       />
       <button className="button solid" type="submit">
-        PREVIEW MY RSVP <span>→</span>
+        SEND RSVP ON WHATSAPP <span aria-hidden="true">→</span>
       </button>
       <p id="form-status" role="status">
         {status}
       </p>
+      {whatsAppUrl && (
+        <a className="text-button" href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
+          Open WhatsApp to send your RSVP
+        </a>
+      )}
     </form>
   );
 }

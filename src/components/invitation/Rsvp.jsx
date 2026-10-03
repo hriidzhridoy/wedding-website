@@ -14,9 +14,9 @@ export default function Rsvp() {
             Kindly reply by <span>{wedding.rsvpDeadline}</span>.
           </p>
         )}
-        <p className="demo-tag">DEMO INVITATION</p>
-        <p className="demo-explanation">
-          Try the form below. No response will be sent or saved.
+        <p>
+          Share your reply with us on WhatsApp. Fill in your details, then tap
+          Send in WhatsApp to let us know.
         </p>
       </div>
       <RsvpForm />

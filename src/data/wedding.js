@@ -1,4 +1,4 @@
-// Wedding details. RSVP submissions are not sent.
+// Wedding details. Guests send their RSVP through WhatsApp.
 export const wedding = {
   bride: "Mouri",
   groom: "Rifat",
@@ -20,4 +20,5 @@ export const wedding = {
   gifts:
     "Having you with us is the most meaningful gift of all. Please bring your love, your blessings, and a little room for dessert.",
   rsvpDeadline: null,
+  rsvpWhatsApp: "8801896159101",
 };

@@ -24,7 +24,7 @@ An elegant, responsive wedding invitation built with **React** and **Vite**. It 
 - Dress-code and gift-information sections
 - Responsive design for mobile, tablet, and desktop
 - Reduced-motion support for accessibility
-- RSVP interface ready to connect to a backend or form service
+- WhatsApp RSVP with a prefilled guest response
 - Playwright end-to-end test setup
 
 ## Built With
@@ -174,7 +174,9 @@ Output directory: dist
 
 ## RSVP Status
 
-The current RSVP section is a front-end interface. Connect it to a backend, database, email service, Google Form, Formspree, or another form provider before collecting real guest responses.
+The RSVP form opens WhatsApp with the guest's name, attendance, guest count, and optional note. Guests must tap Send in WhatsApp to deliver their response; the website does not store responses or confirm delivery. A fallback link lets guests reopen the message if the new tab is blocked.
+
+Set `rsvpWhatsApp` in `src/data/wedding.js` to the recipient's full international number using digits only (no plus sign, spaces, or hyphens).
 
 Never commit API keys, passwords, guest lists, or private wedding information to a public repository. Put secrets in an `.env` file and keep that file in `.gitignore`.
 
