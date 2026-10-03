@@ -52,10 +52,10 @@ function InvitationSession({ onReplay }) {
       {revealed && (
         <a
           className="developer-watermark"
-          href="https://www.facebook.com/asif.mamun.3154"
+          href="https://asif-hridoy.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Developed by Asif Mamun — Facebook profile (opens in a new tab)"
+          aria-label="Developed by Asif Hridoy — Portfolio (opens in a new tab)"
         >
           Developed by <span>Asif Hridoy</span>
         </a>

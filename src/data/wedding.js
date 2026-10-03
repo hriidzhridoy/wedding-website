@@ -19,6 +19,6 @@ export const wedding = {
     "There’s no specific dress code — wear whatever makes you feel comfortable, confident and like yourself.",
   gifts:
     "Having you with us is the most meaningful gift of all. Please bring your love, your blessings, and a little room for dessert.",
-  rsvpDeadline: null,
+  rsvpDeadline: "15th October",
   rsvpWhatsApp: "8801896159101",
 };
